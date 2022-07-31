@@ -12,8 +12,9 @@ class LinkedList{
     this.head = null
   }
   addLast(value){
+    let newNode = new Node(value)
     if(this.head === null){
-      this.head = new Node(value)
+      this.head = newNode
     }
     else{
       // ---------------------- go to last node start ----------------------
@@ -22,7 +23,6 @@ class LinkedList{
         currentNode = currentNode.next
       }
       // ---------------------- go to last node end ----------------------
-      let newNode = new Node(value)
       currentNode.next = newNode
     }
   }
