@@ -37,7 +37,7 @@ class LinkedList{
     let previousNode = null
     
     if(currentNode){
-      while(currentNode.value !== value){
+      while(currentNode.next !== null && currentNode.value !== value){
         previousNode = currentNode
         currentNode = currentNode.next
       }
