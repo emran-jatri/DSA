@@ -7,3 +7,5 @@
 - Internal Node: The node having at least a child node is called an internal node.
 - Root Node: It is the topmost node of a tree
 - Edge: It is the link between any two nodes
+- Height of a node:  The height of a node is **the number of edges** from the node to the deepest leaf (ie. the longest path from the node to a leaf node)
+- Depth of a Node: The depth of a node is the **number of edges** from the root to the node.
