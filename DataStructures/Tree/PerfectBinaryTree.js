@@ -3,8 +3,6 @@
 - A perfect binary tree is a type of binary tree in which every internal node has exactly two child nodes and all the leaf nodes are at the same level.
 - depth:  start with 1
 - level:  start with 0
-
-
 */
 
 class Node {
