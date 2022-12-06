@@ -10,4 +10,4 @@
 - **Height of a node:**  The height of a node is **the number of edges** from the node to the deepest leaf (ie. the longest path from the node to a leaf node)
 - **Depth of a Node:** The depth of a node is the **number of edges** from the root to the node.
 - **Height of a Tree:** The height of a Tree is the height of the root node or the depth of the deepest node.
-![Height of a Tree](https://www.markdownguide.org/cheat-sheet/)
+[Height of a Tree](https://www.markdownguide.org/cheat-sheet/)
