@@ -19,14 +19,24 @@ const preorder = (root) => {
 	}
 }
 
+let count = 1
 const inorder = (root) => {
 	if (root) {
 		//  Traverse left
+		// console.log(root.left, "before", count++)
 		inorder(root.left)
+		// console.log(root.left, "after", count++)
+		
 		//  Traverse root
+		// console.log(root.value, "before", count++)
 		process.stdout.write(root.value + "->")
+		// console.log();
+		// console.log(root.value, "after", count++)
+
 		//  Traverse right
+		// console.log(root.right, "before", count++)
 		inorder(root.right)
+		// console.log(root.right, "after", count++)
 	}
 }
 
