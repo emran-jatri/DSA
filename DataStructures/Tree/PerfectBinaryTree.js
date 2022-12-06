@@ -16,16 +16,16 @@ class Node {
 
 // # Calculate the depth
 const calculateDepth = (node) => {
-  d = 0;
+  depth = 0;
   while (node !== null) {
-    d += 1;
+    depth += 1;
     node = node.left;
   }
-  return d;
+  return depth;
 };
 
 // # Check if the tree is perfect binary tree
-const is_perfect = (root, d, level = 0) => {
+const isPerfect = (root, depth, level = 0) => {
   // # Check if the tree is empty
   if (root === null) {
     return True;
@@ -33,7 +33,7 @@ const is_perfect = (root, d, level = 0) => {
 
   // # Check the presence of trees
   if (root.left === null && root.right === null) {
-    return d == level + 1;
+    return depth == level + 1;
   }
 
   if (root.left === null || root.right === null) {
@@ -41,7 +41,7 @@ const is_perfect = (root, d, level = 0) => {
   }
 
   return (
-    is_perfect(root.left, d, level + 1) && is_perfect(root.right, d, level + 1)
+    isPerfect(root.left, depth, level + 1) && isPerfect(root.right, depth, level + 1)
   );
 };
 
@@ -56,7 +56,7 @@ root.left.right = new Node(5);
 root.right.left = new Node(6);
 root.right.right = new Node(7);
 
-if (is_perfect(root, calculateDepth(root))) {
+if (isPerfect(root, calculateDepth(root))) {
   console.log("The tree is a perfect binary tree");
 } else {
   console.log("The tree is not a perfect binary tree");
