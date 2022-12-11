@@ -26,7 +26,7 @@ const calculateDepth = (node) => {
 const isPerfect = (root, depth, level = 0) => {
   // # Check if the tree is empty
   if (root === null) {
-    return True;
+    return true;
   }
 
   // # Check the presence of trees
@@ -35,7 +35,7 @@ const isPerfect = (root, depth, level = 0) => {
   }
 
   if (root.left === null || root.right === null) {
-    return False;
+    return false;
   }
 
   return (
