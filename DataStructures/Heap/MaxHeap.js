@@ -1,29 +1,29 @@
 // Max-Heap data structure in js
 
-function heapify(array, arraySize, index) {
+function maxHeapify(array, arraySize, index) {
 
-  largest = index;
+  indexOfMax = index;
   leftChildIndex = 2 * index + 1;
   rightChildIndex = 2 * index + 2;
 
   if (leftChildIndex < arraySize && array[index] < array[leftChildIndex]) {
-    largest = leftChildIndex;
+    indexOfMax = leftChildIndex;
   }
 
-  if (rightChildIndex < arraySize && array[largest] < array[rightChildIndex]) {
-    largest = rightChildIndex;
+  if (rightChildIndex < arraySize && array[indexOfMax] < array[rightChildIndex]) {
+    indexOfMax = rightChildIndex;
 	}
 	
-  if (largest != index) {
-    array[index] = [array[largest], (array[largest] = array[index])][0]; // swap array
-    heapify(array, arraySize, largest);
+  if (indexOfMax != index) {
+    array[index] = [array[indexOfMax], (array[indexOfMax] = array[index])][0]; // swap array
+    maxHeapify(array, arraySize, indexOfMax);
 	}
 }
 
 function insert(array, newNum) {
 	array.push(newNum);
   for (let i = Math.floor(array.length / 2) - 1; i > -1; i--) { // only enter this loop if array length is 2
-    heapify(array, array.length, i);
+    maxHeapify(array, array.length, i);
   }
 }
 
@@ -37,7 +37,7 @@ function deleteNode(array, value) {
 		array.pop();
 	
 		for (let i = Math.floor(array.length / 2) - 1; i > -1; i--) {
-			heapify(array, array.length, i);
+			maxHeapify(array, array.length, i);
 		}
 	}
 }
