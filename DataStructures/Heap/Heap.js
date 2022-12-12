@@ -1,27 +1,27 @@
 // Max-Heap data structure in js
 
-function heapify(arr, arraySize, index) {
+function heapify(array, arraySize, index) {
 
   largest = index;
   leftChildIndex = 2 * index + 1;
   rightChildIndex = 2 * index + 2;
 
-  if (leftChildIndex < arraySize && arr[index] < arr[leftChildIndex]) {
+  if (leftChildIndex < arraySize && array[index] < array[leftChildIndex]) {
     largest = leftChildIndex;
   }
 
-  if (rightChildIndex < arraySize && arr[largest] < arr[rightChildIndex]) {
+  if (rightChildIndex < arraySize && array[largest] < array[rightChildIndex]) {
     largest = rightChildIndex;
-  }
-
+	}
+	
   if (largest != index) {
-    arr[index] = [arr[largest], (arr[largest] = arr[index])][0]; // swap array
-    heapify(arr, arraySize, largest);
-  }
+    array[index] = [array[largest], (array[largest] = array[index])][0]; // swap array
+    heapify(array, arraySize, largest);
+	}
 }
 
 function insert(array, newNum) {
-  array.push(newNum);
+	array.push(newNum);
   for (let i = Math.floor(array.length / 2) - 1; i > -1; i--) { // only enter this loop if array length is 2
     heapify(array, array.length, i);
   }
@@ -42,15 +42,20 @@ function deleteNode(array, value) {
 	}
 }
 
-const arr = [];
+const arr1 = [];
 
-insert(arr, 2);
-insert(arr, 15);
-insert(arr, 3);
-insert(arr, 4);
-insert(arr, 9);
+// 3 -> 5 -> 2 -> 4 -> 9 // array
+// 5 -> 4 -> 2 -> 3 -> 9 // simulation
+insert(arr1, 3)
+insert(arr1, 5)
+insert(arr1, 2)
+insert(arr1, 9)
+insert(arr1, 4)
+insert(arr1, 6)
+insert(arr1, 1)
+insert(arr1, 8)
+insert(arr1, 7)
 
-console.log("Max-Heap array: ", arr);
-
-deleteNode(arr, 9);
-console.log("After deleting an element: ", arr);
+console.log("Max-Heap arr1: ", arr1);
+// deleteNode(arr1, 9);
+// console.log("After deleting an element: ", arr1);
