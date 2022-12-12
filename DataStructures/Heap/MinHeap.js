@@ -6,6 +6,7 @@ function minHeapify(array, arraySize, index) {
   leftChildIndex = 2 * index + 1;
   rightChildIndex = 2 * index + 2;
 
+	// leftChildIndex < arraySize -> leaf child
   if (leftChildIndex < arraySize && array[index] > array[leftChildIndex]) {
     indexOfMin = leftChildIndex;
   }
