@@ -24,17 +24,21 @@ class Height {
 }
 
 function isHeightBalanced(root, height) {
+  // console.log("🚀 ~ file: BalanceBinaryTree.js:27 ~ isHeightBalanced ~ root, height", root?.data, height)
   const left_height = new Height();
   const right_height = new Height();
-
+	
   if (root === null) {
-    return true;
+		return true;
   }
-
+	
   let l = isHeightBalanced(root.left, left_height);
   let r = isHeightBalanced(root.right, right_height);
-
+	
   height.height = Math.max(left_height.height, right_height.height) + 1;
+  // console.log("🚀 ~ file: BalanceBinaryTree.js:39 ~ isHeightBalanced ~ height.height", height.height)
+	// console.log("🚀 ~ file: BalanceBinaryTree.js:29 ~ isHeightBalanced ~ left_height", left_height)
+	// console.log("🚀 ~ file: BalanceBinaryTree.js:31 ~ isHeightBalanced ~ right_height", right_height)
 
   if (Math.abs(left_height.height - right_height.height) <= 1) {
     return l && r;
