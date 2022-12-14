@@ -67,20 +67,26 @@ class Node {
 		* 	2. Replace the node with the inorder successor.
 		* 	3. Remove the inorder successor from its original position.
 		*/
-    let childNode = root.leftNode || root.rightNode;
-    if (data === root.data && childNode === null) {
-      root = null;
-    }else if (data === root.data && childNode !== null) {
-			if (root.leftNode !== null) {
-				root = root.leftNode.data;
-			}
-			else {
-				let currentNode = root.rightNode;
-				while (currentNode.leftNode !== null) {
-					currentNode = currentNode.leftNode
-				}
-				root = currentNode;
-			}
+    if (data === root.data) {
+      if (root.leftNode === null && root.rightNode === null) {
+        root = null;
+      } else if (root.rightNode === null) {
+        root = root.leftNode;
+      } else if (root.leftNode === null) {
+        root = root.rightNode;
+      } else {
+        let currentNode = root.leftNode;
+        if (currentNode.rightNode === null) {
+					root.data = currentNode.data;
+					root.leftNode = null;
+        } else {
+          while (currentNode.rightNode !== null) {
+            currentNode = currentNode.rightNode;
+          }
+					root.data = currentNode.data;
+					currentNode = null
+        }
+      }
     } else if (data < root.data) {
       root.leftNode = this.delete(data, root.leftNode);
     } else {
@@ -106,7 +112,7 @@ newNode.insert(7);
 // newNode.search(5);
 // newNode.delete(4)
 // newNode.delete(6)
-newNode.delete(3)
+newNode.delete(6);
 // newNode.delete(6)
 console.dir(newNode, { depth: null });
 
