@@ -21,14 +21,26 @@ class Node {
 
   insert(data, root = this) {
     if (root === null) {
-			root = new Node(data);
+      root = new Node(data);
     } else if (data <= root.data) {
-			root.leftNode = this.insert(data, root.leftNode);
+      root.leftNode = this.insert(data, root.leftNode);
     } else {
-			root.rightNode = this.insert(data, root.rightNode);
+      root.rightNode = this.insert(data, root.rightNode);
     }
-		return root
-	}
+    return root;
+  }
+
+  search(data, root = this) {
+    if (root === null) {
+      console.log(data + " is not found!");
+    } else if (data === root.data) {
+      console.log(data + " is found!");
+    } else if (data <= root.data) {
+      this.search(data, root.leftNode);
+    } else {
+      this.search(data, root.rightNode);
+    }
+  }
 }
 
 const newNode = new Node(5);
@@ -40,6 +52,9 @@ newNode.insert(8);
 newNode.insert(2);
 newNode.insert(9);
 
-// console.log(JSON.stringify(newNode, null, 2));
 // console.dir(newNode, { depth: null });
-// console.table(newNode);
+// newNode.search(19);
+// newNode.search(9);
+newNode.search(5);
+
+// console.log(JSON.stringify(newNode, null, 2));
