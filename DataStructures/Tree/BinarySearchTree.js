@@ -17,6 +17,7 @@ class Node {
     this.data = data;
     this.leftNode = null;
     this.rightNode = null;
+    // this.size = 0;
   }
 
   insert(data, root = this) {
@@ -35,26 +36,78 @@ class Node {
       console.log(data + " is not found!");
     } else if (data === root.data) {
       console.log(data + " is found!");
-    } else if (data <= root.data) {
+    } else if (data < root.data) {
       this.search(data, root.leftNode);
     } else {
       this.search(data, root.rightNode);
     }
   }
+
+  // childCount(root = this) {
+  //   if (root !== null) {
+  //     this.size += 1;
+  //     this.childCount(root.leftNode);
+  //     this.childCount(root.rightNode);
+  //     return this.size - 1;
+  //   }
+  // }
+
+  delete(data, root = this) {
+    /* 
+		* Case I: 
+		* 	- In the first case, the node to be deleted is the leaf node. In such a case, simply delete the node from the * 			tree.
+		* Case II:
+		* 	- In the second case, the node to be deleted lies has a single child node. In such a case follow the steps 		* 		below:
+		* 	1. Replace that node with its child node.
+		* 	2. Remove the child node from its original position.
+
+		* Case III
+		* 	- In the third case, the node to be deleted has two children. In such a case follow the steps below:
+		* 	1. Get the inorder successor of that node.
+		* 	2. Replace the node with the inorder successor.
+		* 	3. Remove the inorder successor from its original position.
+		*/
+    let childNode = root.leftNode || root.rightNode;
+    if (data === root.data && childNode === null) {
+      root = null;
+    }else if (data === root.data && childNode !== null) {
+			if (root.leftNode !== null) {
+				root = root.leftNode.data;
+			}
+			else {
+				let currentNode = root.rightNode;
+				while (currentNode.leftNode !== null) {
+					currentNode = currentNode.leftNode
+				}
+				root = currentNode;
+			}
+    } else if (data < root.data) {
+      root.leftNode = this.delete(data, root.leftNode);
+    } else {
+      root.rightNode = this.delete(data, root.rightNode);
+    }
+    return root;
+  }
 }
 
-const newNode = new Node(5);
+const newNode = new Node(8);
+newNode.insert(3);
+newNode.insert(10);
+newNode.insert(1);
 newNode.insert(6);
+newNode.insert(14);
 newNode.insert(4);
 newNode.insert(7);
-newNode.insert(3);
-newNode.insert(8);
-newNode.insert(2);
-newNode.insert(9);
-
 // console.dir(newNode, { depth: null });
+
 // newNode.search(19);
 // newNode.search(9);
-newNode.search(5);
+// console.log(newNode.childCount());
+// newNode.search(5);
+// newNode.delete(4)
+// newNode.delete(6)
+newNode.delete(3)
+// newNode.delete(6)
+console.dir(newNode, { depth: null });
 
 // console.log(JSON.stringify(newNode, null, 2));
